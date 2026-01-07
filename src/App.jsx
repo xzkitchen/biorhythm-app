@@ -120,7 +120,7 @@ const BioRhythmApp = () => {
   const currentMode = weeklyPlan[selectedDay].mode;
 
   return (
-    <div className="min-h-screen bg-slate-950 font-sans text-slate-300 p-6 md:p-12 flex flex-col justify-center">
+    <div className="min-h-screen bg-slate-950 font-sans text-slate-300 p-4 md:p-6 lg:p-12 flex flex-col justify-center">
       {showTimePicker && <CustomTimePicker />}
       
       <div className="max-w-[1400px] mx-auto w-full space-y-8">
@@ -238,20 +238,20 @@ const BioRhythmApp = () => {
                     const bedTime = subtractMinutes(targetSleepTime, sleepLatency);
 
                     return (
-                      <div key={idx} className={`relative overflow-hidden group py-6 px-8 rounded-[2rem] border ${cycle.color} transition-all duration-300 hover:bg-slate-800/40 hover:scale-[1.01]`}>
-                        <div className="flex justify-between items-center">
+                      <div key={idx} className={`relative overflow-hidden group py-6 px-6 md:px-8 rounded-[2rem] border ${cycle.color} transition-all duration-300 hover:bg-slate-800/40 hover:scale-[1.01]`}>
+                        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
                           <div className="flex-1">
                             <span className={`text-sm font-black uppercase tracking-wider ${cycle.highlight}`}>{cycle.title}</span>
-                            <div className="flex items-baseline gap-3 mt-1">
-                              <span className="text-5xl font-bold text-white tracking-tighter">{bedTime}</span>
+                            <div className="flex items-baseline gap-3 mt-2">
+                              <span className="text-4xl md:text-5xl font-bold text-white tracking-tighter">{bedTime}</span>
                               <span className="text-base text-slate-400 font-bold">上床躺平</span>
                             </div>
                           </div>
-                          <div className="text-right pl-4">
-                            <span className="text-sm font-mono text-slate-300 bg-black/30 px-3 py-1.5 rounded-xl block mb-2 font-bold whitespace-nowrap">
+                          <div className="flex md:flex-col items-center md:items-end gap-3 md:gap-0 md:text-right md:pl-4">
+                            <span className="text-sm font-mono text-slate-300 bg-black/30 px-3 py-1.5 rounded-xl font-bold whitespace-nowrap md:mb-2">
                               {cycle.hours}h / {cycle.cycles}周期
                             </span>
-                            <span className="text-sm text-slate-400 opacity-80 leading-snug block max-w-[140px] ml-auto">{cycle.desc}</span>
+                            <span className="text-sm text-slate-400 opacity-80 leading-snug md:max-w-[140px] md:ml-auto">{cycle.desc}</span>
                           </div>
                         </div>
                       </div>
@@ -343,7 +343,7 @@ const BioRhythmApp = () => {
               </div>
 
               {/* HUD 卡片 */}
-              <div className="grid grid-cols-2 gap-5 mb-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-12">
                 <div className={`p-5 rounded-3xl border flex items-center gap-4 transition-colors ${
                   currentMode === 'normal' 
                     ? 'bg-emerald-900/10 border-emerald-500/20' 
@@ -387,10 +387,10 @@ const BioRhythmApp = () => {
                   <div className="absolute left-0 top-0 w-12 h-12 rounded-2xl bg-slate-900 border-2 border-indigo-500 flex items-center justify-center shadow-[0_0_20px_rgba(99,102,241,0.25)]">
                      <Clock className="w-6 h-6 text-indigo-400" />
                   </div>
-                  <div className="pl-20">
-                     <div className="flex items-center justify-between h-12">
+                  <div className="pl-16 md:pl-20">
+                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:h-12">
                         <span className="text-3xl font-bold text-slate-200">{wakeTime}</span>
-                        <span className="text-base font-bold text-indigo-300 bg-indigo-500/10 px-4 py-1.5 rounded-lg border border-indigo-500/20">
+                        <span className="text-sm md:text-base font-bold text-indigo-300 bg-indigo-500/10 px-3 md:px-4 py-1.5 rounded-lg border border-indigo-500/20 whitespace-nowrap self-start sm:self-auto">
                            吃药 & 喝水
                         </span>
                      </div>
@@ -405,10 +405,10 @@ const BioRhythmApp = () => {
                   <div className="absolute left-0 top-0 w-12 h-12 rounded-2xl bg-slate-900 border-2 border-amber-600 flex items-center justify-center">
                      <Coffee className="w-6 h-6 text-amber-500" />
                   </div>
-                  <div className="pl-20">
-                     <div className="flex items-center justify-between h-12">
+                  <div className="pl-16 md:pl-20">
+                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:h-12">
                         <span className="text-3xl font-bold text-slate-400">{addMinutes(wakeTime, 90)}</span>
-                        <span className="text-lg font-bold text-amber-500/90">最佳咖啡时间</span>
+                        <span className="text-base md:text-lg font-bold text-amber-500/90 self-start sm:self-auto">最佳咖啡时间</span>
                      </div>
                      
                      <div className="mt-4 bg-slate-950/40 rounded-2xl p-4 border border-slate-800 flex gap-4 items-center">
@@ -430,10 +430,10 @@ const BioRhythmApp = () => {
                   <div className="absolute left-0 top-0 w-12 h-12 rounded-2xl bg-slate-900 border-2 border-emerald-500 flex items-center justify-center">
                      <Utensils className="w-6 h-6 text-emerald-500" />
                   </div>
-                  <div className="pl-20">
-                     <div className="flex items-center justify-between h-12">
+                  <div className="pl-16 md:pl-20">
+                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:h-12">
                         <span className="text-3xl font-bold text-slate-300">{addMinutes(wakeTime, 240)}</span>
-                        <span className="text-lg font-bold text-emerald-400/90">
+                        <span className="text-base md:text-lg font-bold text-emerald-400/90 self-start sm:self-auto">
                             {currentMode === 'normal' ? '营养早午餐' : 'OMAD 唯一餐'}
                         </span>
                      </div>
@@ -465,15 +465,15 @@ const BioRhythmApp = () => {
                   <div className="absolute left-0 top-0 w-12 h-12 rounded-2xl bg-slate-900 border-2 border-slate-600 flex items-center justify-center">
                      <Droplets className="w-6 h-6 text-slate-400" />
                   </div>
-                  <div className="pl-20">
-                     <div className="flex items-center justify-between h-12">
+                  <div className="pl-16 md:pl-20">
+                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:h-12">
                         <span className="text-3xl font-bold text-slate-500">
                            {currentMode === 'normal' 
                               ? addMinutes(wakeTime, 240 + 360 + 60) 
                               : addMinutes(wakeTime, 240 + 60) 
                            }
                         </span>
-                        <span className="text-lg font-bold text-slate-500">进入自噬模式</span>
+                        <span className="text-base md:text-lg font-bold text-slate-500 self-start sm:self-auto">进入自噬模式</span>
                      </div>
                      
                      {/* 自噬红利卡片 */}
