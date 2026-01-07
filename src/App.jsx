@@ -227,32 +227,39 @@ const BioRhythmApp = () => {
 
             {/* 2. 中部：睡眠窗口 (人性化版) */}
             <div className="p-8 flex-1 flex flex-col justify-center">
-               <div className="flex items-center gap-3 mb-8 px-1">
+               <div className="flex items-center gap-3 mb-4 px-1">
                   <Moon className="w-6 h-6 text-indigo-400" />
-                  <h2 className="text-xl font-bold text-slate-200">选择入睡窗口</h2>
+                  <div>
+                    <h2 className="text-xl font-bold text-slate-200">选择入睡窗口</h2>
+                    <p className="text-xs text-slate-500 mt-1">以下时间为建议上床时间，预留了{sleepLatency}分钟入睡时长</p>
+                  </div>
                </div>
                
-               <div className="space-y-6"> 
+               <div className="space-y-5"> 
                   {sleepCycles.map((cycle, idx) => {
                     const targetSleepTime = subtractMinutes(wakeTime, cycle.hours * 60);
                     const bedTime = subtractMinutes(targetSleepTime, sleepLatency);
 
                     return (
                       <div key={idx} className={`relative overflow-hidden group py-6 px-6 md:px-8 rounded-[2rem] border ${cycle.color} transition-all duration-300 hover:bg-slate-800/40 hover:scale-[1.01]`}>
-                        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-                          <div className="flex-1">
+                        <div className="space-y-3">
+                          {/* 标题行 */}
+                          <div className="flex items-center justify-between">
                             <span className={`text-sm font-black uppercase tracking-wider ${cycle.highlight}`}>{cycle.title}</span>
-                            <div className="flex items-baseline gap-3 mt-2">
-                              <span className="text-4xl md:text-5xl font-bold text-white tracking-tighter">{bedTime}</span>
-                              <span className="text-base text-slate-400 font-bold">上床躺平</span>
-                            </div>
-                          </div>
-                          <div className="flex md:flex-col items-center md:items-end gap-3 md:gap-0 md:text-right md:pl-4">
-                            <span className="text-sm font-mono text-slate-300 bg-black/30 px-3 py-1.5 rounded-xl font-bold whitespace-nowrap md:mb-2">
+                            <span className="text-sm font-mono text-slate-400 bg-black/30 px-3 py-1 rounded-lg font-bold">
                               {cycle.hours}h / {cycle.cycles}周期
                             </span>
-                            <span className="text-sm text-slate-400 opacity-80 leading-snug md:max-w-[140px] md:ml-auto">{cycle.desc}</span>
                           </div>
+                          
+                          {/* 时间显示 */}
+                          <div className="text-5xl md:text-6xl font-bold text-white tracking-tight">
+                            {bedTime}
+                          </div>
+                          
+                          {/* 描述文字 */}
+                          <p className="text-sm text-slate-400 leading-relaxed pt-1">
+                            {cycle.desc}
+                          </p>
                         </div>
                       </div>
                     );
