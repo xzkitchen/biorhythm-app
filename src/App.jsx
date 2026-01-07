@@ -176,7 +176,7 @@ const BioRhythmApp = () => {
         </div>
 
         {/* 主体 Grid：左右双塔布局 */}
-        <div className="grid lg:grid-cols-2 gap-10 items-stretch">
+        <div className="grid xl:grid-cols-2 gap-10 items-stretch">
           
           {/* ================= 左塔：规划控制台 ================= */}
           <div className="bg-slate-900/40 backdrop-blur-sm rounded-[2.5rem] border border-slate-800 flex flex-col h-full shadow-2xl shadow-black/20">
